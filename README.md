@@ -180,28 +180,13 @@ yum install autoconf
 yum install rpm-build
 ```
 ###### Get sources :
-
+Clone Git repo 
 ```
 cd ~/git
-git clone 
+git clone https://github.com/thibaudbesson/scangearmp2.git
 git archive --format=tar --prefix=scangearmp2-3.90/ HEAD |gzip >scangearmp2_3.90.orig.tar.gz
 mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
 cd ~/rpmbuild/SOURCES/
-
-```
-
-```
-wget https://github.com/Ordissimo/scangearmp2/releases/download/3.90-2/scangearmp2.spec
-wget https://github.com/Ordissimo/scangearmp2/releases/download/3.90-2/scangearmp2_3.90-2ubuntu.artful.tar.xz
-tar xvf scangearmp2_3.90-2ubuntu.artful.tar.xz
-tar czvf scangearmp2_3.90.orig.tar.gz scangearmp2
-mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
-```
-
-Or, from git repository
-```
-git archive --format=tar --prefix=scangearmp2-3.90/ HEAD |gzip >scangearmp2_3.90.orig.tar.gz
-mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
 ```
 
 ###### Build Sources :
