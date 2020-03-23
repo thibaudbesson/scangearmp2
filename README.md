@@ -182,8 +182,8 @@ yum install rpm-build
 ###### Get sources :
 
 ```
+cd ~/git
 git clone 
-cd 
 git archive --format=tar --prefix=scangearmp2-3.90/ HEAD |gzip >scangearmp2_3.90.orig.tar.gz
 mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
 cd ~/rpmbuild/SOURCES/
