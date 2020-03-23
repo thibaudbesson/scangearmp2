@@ -139,7 +139,7 @@ Requirements for scangearmp2 in : scangearmp2/README.md
 
 # INSTALLATION
 
-## For debian systems :
+## For debian systems : _NOT TESTED BY ME_
 ###### Get sources :
 ```
 mkdir build
@@ -180,6 +180,16 @@ yum install autoconf
 yum install rpm-build
 ```
 ###### Get sources :
+
+```
+git clone 
+cd 
+git archive --format=tar --prefix=scangearmp2-3.90/ HEAD |gzip >scangearmp2_3.90.orig.tar.gz
+mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
+cd ~/rpmbuild/SOURCES/
+
+```
+
 ```
 wget https://github.com/Ordissimo/scangearmp2/releases/download/3.90-2/scangearmp2.spec
 wget https://github.com/Ordissimo/scangearmp2/releases/download/3.90-2/scangearmp2_3.90-2ubuntu.artful.tar.xz
@@ -195,15 +205,19 @@ mv scangearmp2_3.90.orig.tar.gz ~/rpmbuild/SOURCES/
 ```
 
 ###### Build Sources :
+Need `--define "debug_package %{nil}"` to avoid error : `Empty %files file /home/thibaud/rpmbuild/BUILD/scangearmp2-3.90/debugsourcefiles.list`
+
 ```
 rpmbuild -bp scangearmp2.spec
-rpmbuild -bc --short-circuit scangearmp2.spec
-rpmbuild -bi --short-circuit scangearmp2.spec
-rpmbuild -ba scangearmp2.spec
+rpmbuild  --define "debug_package %{nil}"  -bc --short-circuit scangearmp2.spec
+rpmbuild  --define "debug_package %{nil}"  -bi --short-circuit scangearmp2.spec
+rpmbuild  --define "debug_package %{nil}"  -ba --short-circuit scangearmp2.spec
 ```
 ###### Install :
+Remove package from Canon and install freshly compiled RPM
 ```
-rpm -i ~/rpmbuild/RPMS/x86_64/scangearmp2-3.90-2.x86_64.rpm
+sudo dnf remove scangearmp2
+sudo rpm -i ~/rpmbuild/RPMS/x86_64/scangearmp2-3.90-2.x86_64.rpm
 ```
 # Activate the backend
 ## For all distributions you need to activate the backend :
